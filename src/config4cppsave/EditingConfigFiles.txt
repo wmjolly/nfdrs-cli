@@ -1,0 +1,15 @@
+How to add switches and settings to cfg files.
+
+1) Edit the base cfg file from source control with new settings; e.g. NFDRSInitSample.cfg
+
+	- Create the deaults for deadFuelMoisture
+	- Create each deadFuelMoisture type (1hr, 10hr, 100hr, 1000hr), setting necessary parameters
+		- only add options that need be different from defaults ( defaults can always be overridden, left out here for brevity)
+
+2) Run the config2cpp which creates new .cpp and .h files for the config:
+	e.g. config2cpp -cfg NFDRSInitSample.txt -class NFDRSInitConfig -singleton
+
+3) Copy the newly generated .cpp and .h file to the RunNFDRS directory
+
+4)Make code changes to read in data associated "Configuration.cpp" file, where the schema is used
+	e.g. for the above, class NFDRSInitConfig is used by NFDRSConfiguration class, edit that class. CNFDRSParams will also have to be edited
