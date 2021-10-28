@@ -10,6 +10,8 @@ COPY ./src /src/NFDRScliV4
 ENV NAME INCFG
 
 # Set the working directory to compile the config4cpp
+WORKDIR /src/NFDRScliV4
+RUN tar xvf config4cpp.tar
 WORKDIR /src/NFDRScliV4/config4cpp
 RUN mkdir /usr/include/config4cpp
 RUN cp /src/NFDRScliV4/config4cpp/include/config4cpp/* /usr/include/config4cpp
